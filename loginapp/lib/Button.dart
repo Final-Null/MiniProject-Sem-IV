@@ -14,22 +14,24 @@ class _ButtonState extends State<Button> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        RaisedButton(
+        ElevatedButton(
           onPressed: () async {
-            if (If.emailController.text.toString() == "101cooder" &&
-                If.pwdController.text.toString() == "Cooder9826") {
+            if (If.emailController.text.toString() == "101final" &&
+                If.pwdController.text.toString() == "final9826") {
               If.emailController.clear();
               If.pwdController.clear();
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SecondScreen()));
               //Navigator.pushNamed(context, '/second');
-            }
-            else if (If.emailController.text.toString() == "" ||
+            } else if (If.emailController.text.toString() == "" ||
                 If.pwdController.text.toString() == "")
               showAlertDialogForEmptyFields(context);
             else
               showAlertDialog(context);
           },
+          style: ElevatedButton.styleFrom(
+            primary: Colors.cyan,
+          ),
           child: Text(
             'Login',
             style: TextStyle(
@@ -38,15 +40,14 @@ class _ButtonState extends State<Button> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          color: Colors.cyan[500],
         ),
       ],
     );
   }
 
   showAlertDialog(BuildContext context) {
-    Widget okButton = FlatButton(
-      child: Text("OK"),
+    Widget okButton = TextButton(
+      child: Text("Ok"),
       onPressed: () {
         Navigator.of(context).pop();
       },
@@ -66,8 +67,8 @@ class _ButtonState extends State<Button> {
   }
 
   showAlertDialogForEmptyFields(BuildContext context) {
-    Widget okButton = FlatButton(
-      child: Text("OK"),
+    Widget okButton = TextButton(
+      child: Text("Ok"),
       onPressed: () {
         Navigator.of(context).pop();
       },

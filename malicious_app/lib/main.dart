@@ -5,7 +5,7 @@ import 'package:device_apps/device_apps.dart';
 void main() {
   runApp(MyApp());
 }
-  
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +31,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
         child: Center(
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text(
               "Attack on app",
               style: TextStyle(
@@ -42,14 +41,13 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             onPressed: () async {
-              bool isInstalled = await DeviceApps.isAppInstalled('com.example.loginapp');
+              bool isInstalled =
+                  await DeviceApps.isAppInstalled('com.example.loginapp');
               if (isInstalled == true)
                 _openApp();
               else
                 showAlertDialog(context);
-              //_openLinkInGoogleChrome();
             },
-            color: Colors.blueAccent,
           ),
         ),
       ),
@@ -58,15 +56,15 @@ class _HomePageState extends State<HomePage> {
 }
 
 showAlertDialog(BuildContext context) {
-  Widget okButton = FlatButton(
-    child: Text("OK"),
+  Widget okButton = TextButton(
+    child: Text("Ok"),
     onPressed: () {
       Navigator.of(context).pop();
     },
   );
   AlertDialog alert = AlertDialog(
-    content:
-        Text("Unable to open app or the benign app is not install on your device"),
+    content: Text(
+        "Unable to open app or the benign app is not install on your device"),
     actions: [
       okButton,
     ],
